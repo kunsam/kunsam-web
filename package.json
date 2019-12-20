@@ -1,0 +1,32 @@
+{
+  "name": "kunsam-web",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "kunsam",
+  "license": "MIT",
+  "scripts": {
+    "build": "next build",
+    "dev": "next --port 4600",
+    "start": "next start --port 4601"
+  },
+  "dependencies": {
+    "next": "^9.1.1",
+    "antd": "^3.24.3",
+    "less": "^3.10.3",
+    "react": "^16.11.0",
+    "lodash": "^4.17.15",
+    "react-dom": "^16.11.0",
+    "react-no-ssr": "^1.1.0",
+    "isomorphic-unfetch": "^3.0.0"
+  },
+  "devDependencies": {
+    "ts-loader": "^6.2.1",
+    "typescript": "^3.6.4",
+    "@types/node": "^12.11.7",
+    "@types/react": "^16.9.11",
+    "@zeit/next-css": "^1.0.1",
+    "@zeit/next-less": "^1.0.1",
+    "@types/lodash": "^4.14.144"
+  }
+}
