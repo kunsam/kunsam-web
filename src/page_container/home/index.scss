@@ -1,0 +1,103 @@
+.carouel-container{
+  // display: flex;
+  overflow-x: scroll;
+
+}
+
+.swiper-button-prev,
+.swiper-button-next{
+  top: 90%;
+  outline: none;
+  color: #bdc3c7;
+  font-weight: 900;
+  text-shadow: 0 1px 0 0 #ffffff inset, 0 1px 2px 0 #B3B3B3;
+  // box-shadow: 0px 10px 1px #ddd, 0 10px 20px #ccc;
+  // background-image: linear-gradient(#12c2e9, #c471ed, #f64f59);
+}
+.swiper-button-prev{
+  left: 35%;
+}
+.swiper-button-next{
+  right: 35%;
+}
+
+.card{
+  // width: 300px;
+  height: 400px;
+  // margin-left: 20px;
+
+  // background-color: #fff;
+  // display: inline-block;
+
+  .card-inner{
+    margin: 0 60px;
+    position: relative;
+    height: 300px;
+
+    .title{
+      // width: 100%;
+      // top: 5px;
+      // position: absolute;
+      color: #fff;
+      z-index: 2;
+      text-align: center;
+      font-family: sans-serif;
+      font-size: 24px;
+      font-weight: 600;
+      padding-top: 20px;
+      margin-bottom: 20px;
+    }
+    .date{
+      // width: 100%;
+      // top: 40px;
+      // position: absolute;
+      color: #fff;
+      z-index: 2;
+      text-align: center;
+      font-size: 12px;
+      font-weight: 400;
+      margin-bottom: 20px;
+    }
+    .desc{
+      color: #fff;
+      font-size: 14px;
+      text-align: center;
+      white-space: pre;
+      font-family: sans-serif;
+      font-weight: 400;
+    }
+    .card-background-image{
+      top: 0;
+      left: 0;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 30px;
+      box-shadow: 0 1px #FFFFFF inset, 0 1px 3px rgba(34, 25, 25, 0.4);
+      z-index: -2;
+    }
+    .mask{
+      top: 0;
+      left: 0;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 30px;
+    }
+  
+    .card-avatar-image{
+      position: absolute;
+      left: 50%;
+      bottom: -20px;
+      width: 50px;
+      transform: translate(-50%, 0);
+      border-radius: 50px;
+      box-shadow: 0 0 1px rgba(34, 25, 25, 0.4);
+      z-index: -1;
+    }
+  }
+
+
+}
