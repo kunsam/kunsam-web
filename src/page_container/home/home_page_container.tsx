@@ -6,6 +6,8 @@ import Swiper from "react-id-swiper";
 import NoSSR from "react-no-ssr";
 import IconButton from "@material-ui/core/IconButton";
 import AccountCircle from "@material-ui/icons/LineStyleOutlined";
+import Router from "next/router";
+import POSTS_MAP, { Post } from "../../../database/post_map";
 
 const params0 = {
   // width: 300,
@@ -48,27 +50,12 @@ const params2 = {
   }
 };
 
-class AppBarRightButton extends Component<any, any> {
-  render() {
-    return (
-      <IconButton
-        aria-label="account of current user"
-        aria-controls="primary-search-account-menu"
-        aria-haspopup="true"
-        color="inherit"
-        style={{
-          position: "absolute",
-          right: 10
-        }}
-      >
-        <AccountCircle />
-      </IconButton>
-    );
+export default class HomePageContainer extends Component<
+  any,
+  {
+    data: Post[];
   }
-}
-
-
-export default class HomePageContainer extends Component<any, any> {
+> {
   constructor(props) {
     super(props);
     this.state = {
@@ -76,12 +63,12 @@ export default class HomePageContainer extends Component<any, any> {
     };
   }
   componentDidMount() {
+    let data = [];
+    POSTS_MAP.forEach(post => {
+      data.push(post);
+    });
     this.setState({
-      data: new Array(10).fill(null).map(_ => ({
-        src: "/static/image1.jpg",
-        avatar: "/static/avatar.jpg",
-        desc: `简要描述\n                    --致某某`
-      }))
+      data
     });
   }
 
@@ -89,8 +76,36 @@ export default class HomePageContainer extends Component<any, any> {
     const { data } = this.state;
     return (
       <MainAppLayout>
+        <div
+          style={{
+            width: "100%",
+            backgroundImage: "linear-gradient(to right, #16222a, #3a6073)",
+            position: "fixed",
+            zIndex: -1,
+            height: 400
+          }}
+        >
+          <video
+            autoPlay
+            loop
+            src={"/static/video/Pexels_Videos_2610.mp4"}
+            style={{ height: 400, minWidth: "100%" }}
+          ></video>
+        </div>
+        <div
+          style={{
+            width: "100%",
+            backgroundColor: "rgb(238, 240, 237)",
+            // backgroundImage: "linear-gradient(to right, #abbaab, #ffffff)",
+            position: "fixed",
+            zIndex: -1,
+            height: "100%",
+            marginTop: 400
+          }}
+        ></div>
         <AppbarLayout
-          title="文章列表"
+          title="精选诗集"
+          titleStyle={{ color: "#000" }}
           // RightButton={AppBarRightButton}
         >
           <div style={{ width: "100%" }}>
@@ -100,15 +115,31 @@ export default class HomePageContainer extends Component<any, any> {
                 style={{ marginTop: 60 }}
               >
                 <Swiper {...params0}>
-                  {data.map((d, index) => (
+                  {data.map((post, index) => (
                     <div className="card" key={index}>
-                      <div className="card-inner">
-                        <h1 className="title">标题</h1>
-                        <h3 className="date">2019 12 20</h3>
-                        <div className="desc">{d.desc}</div>
+                      <div
+                        className="card-inner"
+                        onClick={() => {
+                          Router.push({
+                            pathname: "/post",
+                            query: {
+                              postId: post.id
+                            }
+                          });
+                        }}
+                      >
+                        <h1 className="title">{post.title}</h1>
+                        <h3 className="date">{post.create_date}</h3>
+                        <div className="desc">{post.desc}</div>
                         <div className="mask" />
-                        <img src={d.src} className="card-background-image" />
-                        <img src={d.avatar} className="card-avatar-image" />
+                        <img
+                          src={post.headerBackgroundUrl}
+                          className="card-background-image"
+                        />
+                        <img
+                          src={post.author.avatar}
+                          className="card-avatar-image"
+                        />
                       </div>
                     </div>
                   ))}

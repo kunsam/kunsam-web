@@ -1,24 +1,14 @@
 import "./appbar.scss";
+import AppDrawer from "./app_drawer";
 import React, { Component } from "react";
 import AppBar from "@material-ui/core/AppBar";
+import MenuIcon from "@material-ui/icons/Menu";
+import Toolbar from "@material-ui/core/Toolbar";
+import { CssBaseline } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
-import InputBase from "@material-ui/core/InputBase";
-import Toolbar from "@material-ui/core/Toolbar";
 import { fade } from "@material-ui/core/styles/colorManipulator";
-import SearchIcon from "@material-ui/icons/Search";
 import { withStyles, createStyles, Theme } from "@material-ui/core/styles";
-import { Grid, CssBaseline } from "@material-ui/core";
-import AccountCircle from "@material-ui/icons/LineStyleOutlined";
-import Drawer from "@material-ui/core/Drawer";
-import List from "@material-ui/core/List";
-import Divider from "@material-ui/core/Divider";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
-import HomeIcon from "@material-ui/icons/Home";
-import MailIcon from "@material-ui/icons/People";
 
 const styles = (theme: Theme) =>
   createStyles({
@@ -27,11 +17,6 @@ const styles = (theme: Theme) =>
     },
     grow: {
       flexGrow: 1
-    },
-    title: {
-      [theme.breakpoints.up("sm")]: {
-        display: "block"
-      }
     },
     search: {
       position: "relative",
@@ -92,7 +77,15 @@ class AppbarLayoutComponent extends Component<any, any> {
 
   render() {
     const { openDrawer } = this.state;
-    const { title, classes, RightButton, LeftButton } = this.props;
+    const {
+      title,
+      date,
+      classes,
+      RightButton,
+      LeftButton,
+      titleStyle = {},
+      containerStyle = {}
+    } = this.props;
     return (
       <div className={classes.root}>
         <CssBaseline />
@@ -120,7 +113,8 @@ class AppbarLayoutComponent extends Component<any, any> {
                   aria-label="Menu"
                   style={{
                     position: "absolute",
-                    left: 10
+                    left: 10,
+                    color: "#000"
                   }}
                   onClick={this._toggleDrawer(true)}
                 >
@@ -128,47 +122,23 @@ class AppbarLayoutComponent extends Component<any, any> {
                 </IconButton>
               )}
 
-              <Drawer open={openDrawer} onClose={this._toggleDrawer(false)}>
-                <div
-                  role="presentation"
-                  onClick={this._toggleDrawer(false)}
-                  onKeyDown={this._toggleDrawer(false)}
-                  style={{ width: 200 }}
-                >
-                  <List>
-                    {["首页"].map((text, index) => (
-                      <ListItem button key={text}>
-                        <ListItemIcon>
-                          <HomeIcon />
-                        </ListItemIcon>
-                        <ListItemText primary={text} />
-                      </ListItem>
-                    ))}
-                  </List>
-                  <Divider />
-                  <List>
-                    {["关于作者"].map((text, index) => (
-                      <ListItem button key={text}>
-                        <ListItemIcon>
-                          <MailIcon></MailIcon>
-                        </ListItemIcon>
-                        <ListItemText primary={text} />
-                      </ListItem>
-                    ))}
-                  </List>
-                </div>
-              </Drawer>
+              <AppDrawer
+                openDrawer={openDrawer}
+                toggleDrawer={this._toggleDrawer}
+              />
 
               {title && (
                 <Typography
+                  style={titleStyle}
                   noWrap
                   variant="h6"
                   color="inherit"
-                  className={classes.title}
                 >
                   {title}
                 </Typography>
               )}
+
+              {date && <h3 className="title-date">{date}</h3>}
 
               {/* <div className={classes.grow} /> */}
 
@@ -176,8 +146,15 @@ class AppbarLayoutComponent extends Component<any, any> {
             </Toolbar>
           </AppBar>
         </div>
-        <div style={{ width: "100%", minHeight: "100vh", paddingTop: 65 }}>
-          <div style={{ marginTop: 10 }}>{this.props.children}</div>
+        <div
+          style={{
+            width: "100%",
+            minHeight: "100vh",
+            paddingTop: 65,
+            ...containerStyle
+          }}
+        >
+          {this.props.children}
         </div>
       </div>
     );
