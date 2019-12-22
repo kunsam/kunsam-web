@@ -24,7 +24,6 @@ export class MainAppLayout extends Component<any, any> {
             rel="stylesheet"
             href="https://fonts.googleapis.com/icon?family=Material+Icons"
           />
-          {/* <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css"></link> */}
         </Head>
         {this.props.children}
       </div>

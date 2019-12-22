@@ -20,7 +20,6 @@ export default class AppDrawer extends Component<any, any> {
       >
         <div
           role="presentation"
-          // onClick={toggleDrawer(false)}
           onKeyDown={toggleDrawer(false)}
           style={{ width: 200 }}
         >
@@ -28,7 +27,7 @@ export default class AppDrawer extends Component<any, any> {
             {["首页", "精选诗集"].map((text, index) => (
               <div
                 key={text}
-                onClick={(e) => {
+                onClick={e => {
                   toggleDrawer(false)(e);
                   alert("各项功能还在开发中... 2019-12-12");
                 }}

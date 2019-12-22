@@ -23,7 +23,6 @@ export default class MyApp extends App<any, any, any> {
 
     return (
       <>
-        {/* <NProgress /> */}
         <div className="app-main">
           <Component {...pageProps} />
         </div>

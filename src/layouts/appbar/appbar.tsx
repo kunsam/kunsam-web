@@ -17,43 +17,6 @@ const styles = (theme: Theme) =>
     },
     grow: {
       flexGrow: 1
-    },
-    search: {
-      position: "relative",
-      borderRadius: theme.shape.borderRadius,
-      backgroundColor: fade(theme.palette.common.white, 0.15),
-      "&:hover": {
-        backgroundColor: fade(theme.palette.common.white, 0.25)
-      },
-      marginLeft: 0,
-      width: "100%",
-      [theme.breakpoints.up("sm")]: {
-        marginLeft: 1,
-        width: "auto"
-      }
-    },
-    searchIcon: {
-      width: 9,
-      height: "100%",
-      position: "absolute",
-      pointerEvents: "none",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center"
-    },
-    inputRoot: {
-      color: "inherit",
-      width: "100%"
-    },
-    inputInput: {
-      transition: theme.transitions.create("width"),
-      width: "100%",
-      [theme.breakpoints.up("sm")]: {
-        width: 120,
-        "&:focus": {
-          width: 200
-        }
-      }
     }
   });
 
@@ -103,8 +66,6 @@ class AppbarLayoutComponent extends Component<any, any> {
                 justifyContent: "center"
               }}
             >
-              {/* 传为可配置的 */}
-
               {LeftButton ? (
                 <LeftButton />
               ) : (
@@ -129,18 +90,16 @@ class AppbarLayoutComponent extends Component<any, any> {
 
               {title && (
                 <Typography
-                  style={titleStyle}
                   noWrap
                   variant="h6"
                   color="inherit"
+                  style={titleStyle}
                 >
                   {title}
                 </Typography>
               )}
 
               {date && <h3 className="title-date">{date}</h3>}
-
-              {/* <div className={classes.grow} /> */}
 
               {RightButton && <RightButton />}
             </Toolbar>
