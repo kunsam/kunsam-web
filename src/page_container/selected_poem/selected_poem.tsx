@@ -137,7 +137,7 @@ export default class SelectedPoemPageContainer extends Component<
                         }}
                       >
                         <h2 className="author-name">{post.author.name}</h2>
-                        <h2 className="author-name">{post.author.lifetime}</h2>
+                        <h2 className="author-lifetime">{post.author.lifetime}</h2>
                         <p className="author-desc">{post.author.desc}</p>
                       </div>
                     </div>

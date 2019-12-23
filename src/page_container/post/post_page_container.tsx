@@ -100,13 +100,7 @@ class PostPageContainer extends Component<
 
   render() {
     const {
-      post: {
-        title,
-        musicUrl,
-        client,
-        content,
-        author
-      }
+      post: { title, musicUrl, client, content, author }
     } = this.props;
     const { musicPlayState } = this.state;
     return (
@@ -130,7 +124,11 @@ class PostPageContainer extends Component<
               <Parallax blur={{ min: -30, max: 30 }} strength={350}>
                 <Background className="custom-bg">
                   {content && content.backgroundUrl && (
-                    <img className="background" src={content.backgroundUrl} />
+                    <img
+                      className="background"
+                      src={content.backgroundUrl}
+                      style={{ minHeight: 550 }}
+                    />
                   )}
                   <div className="mask" />
                 </Background>
@@ -142,7 +140,9 @@ class PostPageContainer extends Component<
                 </div>
               </Parallax>
               <div className="content-container">
-                {author && author.avatar && <img className="avatar" src={author.avatar} />}
+                {author && author.avatar && (
+                  <img className="avatar" src={author.avatar} />
+                )}
                 {client && client.renderContent()}
               </div>
 

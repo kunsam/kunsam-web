@@ -1,5 +1,7 @@
 import POST1_CONTENT from "./contents/post1/post1";
 import POST2_CONTENT from "./contents/post2/post2";
+import POST3 from './contents/post_list/week1/post3'
+import POST4 from './contents/post_list/week1/post4'
 
 export interface Post {
   id: string;
@@ -84,7 +86,9 @@ const POSTS: Post[] = [
       avatar: "/static/image/post1_author.png",
       lifetime: "1872 - 1943"
     }
-  }
+  },
+  POST3,
+  POST4
 ];
 
 const POSTS_MAP: Map<string, Post> = new Map();
