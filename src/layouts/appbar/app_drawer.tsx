@@ -12,7 +12,6 @@ import { withRouter, Router } from "next/router";
 class AppDrawerComponent extends Component<any, any> {
   handleClickItem = (key: string, index: number) => {
     const { router, pathname } = this.props;
-    console.log(router, "routerrouter");
     switch (key) {
       case "精选诗集": {
         if (pathname !== "/") {

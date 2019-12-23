@@ -4,14 +4,11 @@ import { MainAppLayout } from "../../layouts/mainapp/mainapp";
 import AppbarLayout from "../../layouts/appbar/appbar";
 import IconButton from "@material-ui/core/IconButton";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
-import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
+import PlayArrowrIcon from "@material-ui/icons/PlayArrow";
 import Router from "next/dist/client/router";
-import { Post } from "../../../database/post_map";
 import { Parallax, Background } from "react-parallax";
 import NoSSR from "react-no-ssr";
 import TextField from "@material-ui/core/TextField";
-import InputBase from "@material-ui/core/InputBase";
-import Divider from "@material-ui/core/Divider";
 import CommentIcon from "@material-ui/icons/Comment";
 import Danmu from "../../components/danmu/danmu";
 
@@ -34,53 +31,73 @@ class LeftButton extends Component<any, any> {
   }
 }
 
-class RightButton extends Component<{ post: Post }, any> {
+class RightButton extends Component<any, any> {
   render() {
+    const { playState, onClick } = this.props;
+    if (playState === "paused") {
+    }
     return (
       <div
         className="progress progress--playing"
         style={{
-          position: "absolute",
           width: 20,
-          right: 10
+          right: 10,
+          position: "absolute",
+          justifyContent: "center"
         }}
+        onClick={onClick}
       >
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
+        {playState === "paused" ? (
+          <PlayArrowrIcon style={{ marginTop: 5, right: 10, color: "#fff" }} />
+        ) : (
+          <>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </>
+        )}
       </div>
-      // <IconButton
-      //   color="inherit"
-      //   style={{
-      //     position: "absolute",
-      //     right: 10
-      //   }}
-      //   onClick={() => {
-      //     alert("开发中");
-      //   }}
-      // >
-      //   <FavoriteBorderIcon />
-      // </IconButton>
     );
   }
 }
 
 class PostPageContainer extends Component<
   {
-    post: Post;
+    post: any;
   },
   {
     showComment: boolean;
+    musicPlayState: string;
   }
 > {
+  private _musicRef: any;
+  private _musicPlayState: string = "playing";
+
   constructor(props) {
     super(props);
     this.state = {
-      showComment: false
+      showComment: false,
+      musicPlayState: this._musicPlayState
     };
   }
+
+  _handleClickRightButton = e => {
+    if (this._musicRef) {
+      if (this._musicPlayState === "playing") {
+        this._musicRef.pause();
+        this._musicPlayState = "paused";
+      } else {
+        this._musicRef.play();
+        this._musicPlayState = "playing";
+      }
+      this.setState({
+        musicPlayState: this._musicPlayState
+      });
+    }
+  };
+
   render() {
     const {
       post: {
@@ -88,18 +105,22 @@ class PostPageContainer extends Component<
         musicUrl,
         client,
         content,
-        upload: { create_date },
-        author: { avatar }
+        author
       }
     } = this.props;
+    const { musicPlayState } = this.state;
     return (
       <NoSSR>
         <MainAppLayout>
           <AppbarLayout
             title={title}
-            date={create_date}
             LeftButton={LeftButton}
-            RightButton={RightButton}
+            RightButton={() => (
+              <RightButton
+                playState={musicPlayState}
+                onClick={this._handleClickRightButton}
+              />
+            )}
             containerStyle={{
               paddingTop: 0,
               backgroundColor: `rgb(238, 240, 237)`
@@ -121,16 +142,22 @@ class PostPageContainer extends Component<
                 </div>
               </Parallax>
               <div className="content-container">
-                {avatar && <img className="avatar" src={avatar} />}
+                {author && author.avatar && <img className="avatar" src={author.avatar} />}
                 {client && client.renderContent()}
               </div>
 
-              {/* {musicUrl && (
-                <audio autoPlay loop src={musicUrl}>
+              {musicUrl && (
+                <audio
+                  autoPlay
+                  src={musicUrl}
+                  ref={ref => {
+                    this._musicRef = ref;
+                  }}
+                >
                   Your browser does not support the
                   <code>audio</code> element.
                 </audio>
-              )} */}
+              )}
             </div>
 
             <IconButton

@@ -1,11 +1,9 @@
 .my-poem-page-container {
   .card {
-    width: 74%;
-    // height: 100%;
+    width: 100%;
     .card-inner {
       height: 300px;
-      // margin: 0 60px;
-
+      margin: 0 30px;
       position: relative;
       .title {
         z-index: 2;
@@ -16,25 +14,6 @@
         text-align: center;
         margin-bottom: 10px;
         font-family: sans-serif;
-      }
-      .uploader {
-        right: 20px;
-        width: 100%;
-        bottom: 10px;
-        position: absolute;
-        .uploader-author {
-          color: #fefefe;
-          font-size: 10px;
-          font-weight: 400;
-          text-align: right;
-        }
-        .uploader-date {
-          color: #fefefe;
-          opacity: 0.9;
-          font-size: 8px;
-          font-weight: 400;
-          text-align: right;
-        }
       }
       .desc {
         color: #fff;
@@ -64,32 +43,6 @@
         position: absolute;
         border-radius: 30px;
         background: rgba(0, 0, 0, 0.6);
-      }
-
-      .card-avatar-image {
-        left: 50%;
-        width: 50px;
-        z-index: -1;
-        bottom: -20px;
-        position: absolute;
-        border-radius: 50px;
-        transform: translate(-50%, 0);
-        box-shadow: 0 0 1px rgba(34, 25, 25, 0.4);
-      }
-    }
-
-    .card-outer {
-      padding-top: 30px;
-      .author-name {
-        text-align: center;
-        font-size: 14px;
-        font-weight: 500;
-      }
-      .author-desc {
-        margin-top: 5px;
-        text-align: center;
-        font-size: 12px;
-        font-weight: 300;
       }
     }
   }

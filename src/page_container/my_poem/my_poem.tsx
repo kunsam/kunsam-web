@@ -5,7 +5,7 @@ import AppbarLayout from "../../layouts/appbar/appbar";
 import Swiper from "react-id-swiper";
 import NoSSR from "react-no-ssr";
 import Router from "next/router";
-import POSTS_MAP, { Post } from "../../../database/post_map";
+import MY_POSTS_MAP, { MYPost } from "../../../database/mypost_map";
 
 const params = {
   effect: "cube",
@@ -21,7 +21,7 @@ const params = {
 export default class SelectedPoemPageContainer extends Component<
   any,
   {
-    data: Post[];
+    data: MYPost[];
     currentTimeLine: number;
     currentSwiperIndex: number;
   }
@@ -36,7 +36,7 @@ export default class SelectedPoemPageContainer extends Component<
   }
   componentDidMount() {
     let data = [];
-    POSTS_MAP.forEach(post => {
+    MY_POSTS_MAP.forEach(post => {
       data.push(post);
     });
     const cacheIndex = window.sessionStorage.getItem(
@@ -62,7 +62,7 @@ export default class SelectedPoemPageContainer extends Component<
           }}
         >
           <img
-            src={"/static/video/beach.gif"}
+            src={"/static/video/sky-night.gif"}
             style={{ height: 400, minWidth: "100%" }}
           />
         </div>
@@ -81,7 +81,7 @@ export default class SelectedPoemPageContainer extends Component<
             <NoSSR>
               <div
                 className="custom-swiper-slide-container"
-                style={{ marginTop: 60 }}
+                style={{ marginTop: 100 }}
               >
                 <Swiper
                   {...params}
@@ -92,7 +92,7 @@ export default class SelectedPoemPageContainer extends Component<
                         currentSwiperIndex: swiper.activeIndex
                       });
                       window.sessionStorage.setItem(
-                        "post-currentSwiperIndex",
+                        "my_poem-currentSwiperIndex",
                         swiper.activeIndex
                       );
                     });
@@ -106,6 +106,7 @@ export default class SelectedPoemPageContainer extends Component<
                           Router.push({
                             pathname: "/post",
                             query: {
+                              type: 'mypost',
                               postId: post.id
                             }
                           });
@@ -119,29 +120,6 @@ export default class SelectedPoemPageContainer extends Component<
                           src={post.brief.backgroundUrl}
                           className="card-background-image"
                         />
-                        <img
-                          src={post.author.avatar}
-                          className="card-avatar-image"
-                        />
-                        <div className="uploader">
-                          <h3 className="uploader-author">
-                            {post.upload.author}
-                          </h3>
-                          <h3 className="uploader-date">
-                            上传于 {post.upload.create_date}
-                          </h3>
-                        </div>
-                      </div>
-
-                      <div
-                        className="card-outer"
-                        style={{
-                          display: currentSwiperIndex === index ? "" : "none"
-                        }}
-                      >
-                        <h2 className="author-name">{post.author.name}</h2>
-                        <h2 className="author-name">{post.author.lifetime}</h2>
-                        <p className="author-desc">{post.author.desc}</p>
                       </div>
                     </div>
                   ))}

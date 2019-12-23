@@ -60,7 +60,7 @@ const default_danmu = [
   },
   {
     top: 40,
-    content: "这首诗真好"
+    content: "这首诗写得真好"
   },
   {
     top: 60,
@@ -68,7 +68,7 @@ const default_danmu = [
   },
   {
     top: 90,
-    content: "这首诗真好"
+    content: "好喜欢这首诗啊!!!!"
   },
   {
     top: 130,
