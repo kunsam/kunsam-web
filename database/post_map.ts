@@ -4,14 +4,28 @@ import POST2_CONTENT from "./contents/post2/post2";
 export interface Post {
   id: string;
   title: string;
-  create_date: string;
-  headerBackgroundUrl: string;
-  contentBackgroundUrl: string;
-  renderContent?: any;
+  desc?: string;
+  content: {
+    backgroundUrl: string;
+  };
+
   musicUrl?: string;
-  desc: string;
+
+  brief?: {
+    backgroundUrl: string;
+  };
   author: {
+    name: string;
     avatar: string;
+    desc: string;
+    lifetime: string;
+  };
+  upload: {
+    author?: string;
+    create_date: string;
+  };
+  client?: {
+    renderContent?: any;
   };
 }
 
@@ -19,29 +33,56 @@ const POSTS: Post[] = [
   {
     id: "post2",
     title: "《人的一生》",
-    create_date: "[以色列]耶胡达·阿米亥",
-    headerBackgroundUrl: "/static/image/post2_2.png",
-    contentBackgroundUrl: "/static/image/post2_3.png",
+    upload: {
+      author: "sam",
+      create_date: "2019-12-23"
+    },
+    brief: {
+      backgroundUrl: "/static/image/post2_2.png"
+    },
+    content: {
+      backgroundUrl: "/static/image/post2_3.png"
+    },
+
     musicUrl: "/static/music/Childhood_Remembered.mp3",
-    renderContent: POST2_CONTENT,
-    desc:
-      "                “人将在秋日死去，\n\n                           犹如一颗无花果”",
+
+    desc: " “人将在秋日死去，\n犹如一颗无花果”",
     author: {
-      avatar: "/static/image/post2_author.png"
+      name: "[以色列]耶胡达·阿米亥",
+      desc:
+        "以色列当代诗人, 其主要作品有诗集《现在及他日》、《此刻在风暴中》、《开·闭·开》等，曾获得1982年度以色列奖，1995马其顿金花环奖等",
+      avatar: "/static/image/post2_author.png",
+      lifetime: "1924 - 2000"
+    },
+    client: {
+      renderContent: POST2_CONTENT
     }
   },
   {
     id: "post1",
     title: "《初恋》",
-    create_date: "[日]岛崎藤村",
-    headerBackgroundUrl: "/static/image/post1.png",
-    contentBackgroundUrl: "/static/image/post1_content.png",
+
     musicUrl: "/static/music/wanghouyusheng.mp3",
-    renderContent: POST1_CONTENT,
-    desc:
-      "                “欢乐的恋爱之杯，\n\n                           斟满你的蜜意柔情”",
+    upload: {
+      author: "sam",
+      create_date: "2019-12-23"
+    },
+    client: {
+      renderContent: POST1_CONTENT
+    },
+    brief: {
+      backgroundUrl: "/static/image/post1.png"
+    },
+    content: {
+      backgroundUrl: "/static/image/post1_content.png"
+    },
+    desc: "“欢乐的恋爱之杯，\n斟满你的蜜意柔情”",
     author: {
-      avatar: "/static/image/post1_author.png"
+      name: "[日]岛崎藤村",
+      desc:
+        "日本诗人、小说家。原名岛崎春树。以第一本浪漫诗集《若菜集》，开创了日本近代诗的新境界。之后转向小说发展，发表了《破戒》，开创了日本自然主义文学的先驱。",
+      avatar: "/static/image/post1_author.png",
+      lifetime: "1872 - 1943"
     }
   }
 ];

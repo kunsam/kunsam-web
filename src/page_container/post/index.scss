@@ -1,6 +1,33 @@
+#comment-icon-button{
+  right: 0px;
+  z-index: 4;
+  bottom: 0px;
+  height: 60px;
+  color: #203A43;
+  position: fixed;
+}
+#comment-area {
+  bottom: 0px;
+  width: 100%;
+  height: 60px;
+  opacity: 0.9;
+  position: fixed;
+  padding-left: 20px;
+  padding-bottom: 60px;
+  background-color: #fff;
+  z-index: 3;
+  .input {
+    height: 30px;
+    width: 80%;
+  }
+  #comment-TextField{
+    width: 300px;
+  }
+}
+
 .PostPageContainer {
-  .custom-bg{
-    .mask{
+  .custom-bg {
+    .mask {
       position: absolute;
       width: 100%;
       height: 100%;
@@ -37,7 +64,7 @@
   height: 30px;
   display: flex;
   span {
-    width: '20%';
+    width: "20%";
     flex: 1;
     align-self: flex-end;
     background: linear-gradient(

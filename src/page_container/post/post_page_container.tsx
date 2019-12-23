@@ -9,6 +9,11 @@ import Router from "next/dist/client/router";
 import { Post } from "../../../database/post_map";
 import { Parallax, Background } from "react-parallax";
 import NoSSR from "react-no-ssr";
+import TextField from "@material-ui/core/TextField";
+import InputBase from "@material-ui/core/InputBase";
+import Divider from "@material-ui/core/Divider";
+import CommentIcon from "@material-ui/icons/Comment";
+import Danmu from "../../components/danmu/danmu";
 
 class LeftButton extends Component<any, any> {
   render() {
@@ -29,7 +34,7 @@ class LeftButton extends Component<any, any> {
   }
 }
 
-class RightButton extends Component<any, any> {
+class RightButton extends Component<{ post: Post }, any> {
   render() {
     return (
       <div
@@ -63,19 +68,27 @@ class RightButton extends Component<any, any> {
 }
 
 class PostPageContainer extends Component<
-  any,
   {
     post: Post;
+  },
+  {
+    showComment: boolean;
   }
 > {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showComment: false
+    };
+  }
   render() {
     const {
       post: {
         title,
         musicUrl,
-        contentBackgroundUrl,
-        create_date,
-        renderContent,
+        client,
+        content,
+        upload: { create_date },
         author: { avatar }
       }
     } = this.props;
@@ -95,12 +108,13 @@ class PostPageContainer extends Component<
             <div className="PostPageContainer">
               <Parallax blur={{ min: -30, max: 30 }} strength={350}>
                 <Background className="custom-bg">
-                  {contentBackgroundUrl && (
-                    <img className="background" src={contentBackgroundUrl} />
+                  {content && content.backgroundUrl && (
+                    <img className="background" src={content.backgroundUrl} />
                   )}
                   <div className="mask" />
                 </Background>
                 <div className="parallax-inner">
+                  <Danmu />
                   <div className="image-header">
                     {/* <h3 className="create_date">{create_date}</h3> */}
                   </div>
@@ -108,15 +122,33 @@ class PostPageContainer extends Component<
               </Parallax>
               <div className="content-container">
                 {avatar && <img className="avatar" src={avatar} />}
-                {renderContent && renderContent()}
+                {client && client.renderContent()}
               </div>
-              {musicUrl && (
+
+              {/* {musicUrl && (
                 <audio autoPlay loop src={musicUrl}>
                   Your browser does not support the
                   <code>audio</code> element.
                 </audio>
-              )}
+              )} */}
             </div>
+
+            <IconButton
+              id="comment-icon-button"
+              onClick={() => {
+                this.setState({
+                  showComment: !this.state.showComment
+                });
+              }}
+            >
+              <CommentIcon />
+            </IconButton>
+
+            {this.state.showComment && (
+              <div id="comment-area">
+                <TextField id="comment-TextField" label="评论" />
+              </div>
+            )}
           </AppbarLayout>
         </MainAppLayout>
       </NoSSR>

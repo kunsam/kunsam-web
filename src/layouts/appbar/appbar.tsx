@@ -29,6 +29,7 @@ class AppbarLayoutComponent extends Component<any, any> {
   }
   _toggleDrawer = (open: boolean) => event => {
     if (
+      event &&
       event.type === "keydown" &&
       (event.key === "Tab" || event.key === "Shift")
     ) {
@@ -74,8 +75,7 @@ class AppbarLayoutComponent extends Component<any, any> {
                   aria-label="Menu"
                   style={{
                     position: "absolute",
-                    left: 10,
-                    color: "#000"
+                    left: 10
                   }}
                   onClick={this._toggleDrawer(true)}
                 >

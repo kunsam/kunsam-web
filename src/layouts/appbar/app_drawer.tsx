@@ -7,29 +7,50 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import HomeIcon from "@material-ui/icons/Home";
 import MailIcon from "@material-ui/icons/People";
+import { withRouter, Router } from "next/router";
 
-export default class AppDrawer extends Component<any, any> {
+class AppDrawerComponent extends Component<any, any> {
+  handleClickItem = (key: string, index: number) => {
+    const { router, pathname } = this.props;
+    console.log(router, "routerrouter");
+    switch (key) {
+      case "精选诗集": {
+        if (pathname !== "/") {
+          router.push("/");
+        }
+        break;
+      }
+      case "我的诗集": {
+        if (pathname !== "/my_poem") {
+          router.push("/my_poem");
+        }
+        break;
+      }
+      case "关于作者": {
+        if (pathname !== "/about") {
+          router.push("/about");
+        }
+        break;
+      }
+    }
+  };
+
   render() {
     const { openDrawer, toggleDrawer } = this.props;
     return (
-      <Drawer
-        open={openDrawer}
-        onClose={() => {
-          toggleDrawer(false)();
-        }}
-      >
+      <Drawer open={openDrawer} onClose={toggleDrawer(false)}>
         <div
           role="presentation"
           onKeyDown={toggleDrawer(false)}
           style={{ width: 200 }}
         >
           <List>
-            {["首页", "精选诗集"].map((text, index) => (
+            {["精选诗集"].map((text, index) => (
               <div
                 key={text}
                 onClick={e => {
+                  this.handleClickItem(text, index);
                   toggleDrawer(false)(e);
-                  alert("各项功能还在开发中... 2019-12-12");
                 }}
               >
                 <ListItem button>
@@ -47,8 +68,8 @@ export default class AppDrawer extends Component<any, any> {
               <div
                 key={text}
                 onClick={e => {
+                  this.handleClickItem(text, index);
                   toggleDrawer(false)(e);
-                  alert("各项功能还在开发中... 2019-12-12");
                 }}
               >
                 <ListItem button key={text}>
@@ -65,3 +86,7 @@ export default class AppDrawer extends Component<any, any> {
     );
   }
 }
+
+const AppDrawer = withRouter(AppDrawerComponent);
+
+export default AppDrawer;

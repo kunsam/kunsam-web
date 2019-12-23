@@ -6,11 +6,17 @@ const DEFAULT_POST: Post = {
   id: "",
   title: "",
   desc: "",
-  create_date: "",
-  headerBackgroundUrl: "",
-  contentBackgroundUrl: "",
+  content: {
+    backgroundUrl: ""
+  },
+  upload: {
+    create_date: ""
+  },
   author: {
-    avatar: ""
+    desc: "",
+    name: "",
+    avatar: "",
+    lifetime: ""
   }
 };
 
