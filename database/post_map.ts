@@ -2,6 +2,8 @@ import POST1_CONTENT from "./contents/post1/post1";
 import POST2_CONTENT from "./contents/post2/post2";
 import POST3 from './contents/post_list/week1/post3'
 import POST4 from './contents/post_list/week1/post4'
+import POST5 from './contents/post_list/week1/post5'
+import POST6 from './contents/post_list/week1/post6'
 
 export interface Post {
   id: string;
@@ -88,7 +90,9 @@ const POSTS: Post[] = [
     }
   },
   POST3,
-  POST4
+  POST4,
+  POST5,
+  POST6
 ];
 
 const POSTS_MAP: Map<string, Post> = new Map();
