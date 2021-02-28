@@ -1,4 +1,3 @@
-import "./appbar.scss";
 import AppDrawer from "./app_drawer";
 import React, { Component } from "react";
 import AppBar from "@material-ui/core/AppBar";
@@ -7,27 +6,27 @@ import Toolbar from "@material-ui/core/Toolbar";
 import { CssBaseline } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
-import { fade } from "@material-ui/core/styles/colorManipulator";
 import { withStyles, createStyles, Theme } from "@material-ui/core/styles";
+import styles from "./appbar.module.scss";
 
-const styles = (theme: Theme) =>
+const fstyles = (theme: Theme) =>
   createStyles({
     root: {
-      flexGrow: 1
+      flexGrow: 1,
     },
     grow: {
-      flexGrow: 1
-    }
+      flexGrow: 1,
+    },
   });
 
 class AppbarLayoutComponent extends Component<any, any> {
   constructor(props) {
     super(props);
     this.state = {
-      openDrawer: false
+      openDrawer: false,
     };
   }
-  _toggleDrawer = (open: boolean) => event => {
+  _toggleDrawer = (open: boolean) => (event) => {
     if (
       event &&
       event.type === "keydown" &&
@@ -48,7 +47,7 @@ class AppbarLayoutComponent extends Component<any, any> {
       RightButton,
       LeftButton,
       titleStyle = {},
-      containerStyle = {}
+      containerStyle = {},
     } = this.props;
     return (
       <div className={classes.root}>
@@ -59,12 +58,12 @@ class AppbarLayoutComponent extends Component<any, any> {
             style={{
               height: 64,
               boxShadow: "none",
-              backgroundColor: "rgba(0, 0, 0, 0)"
+              backgroundColor: "rgba(0, 0, 0, 0)",
             }}
           >
             <Toolbar
               style={{
-                justifyContent: "center"
+                justifyContent: "center",
               }}
             >
               {LeftButton ? (
@@ -75,7 +74,7 @@ class AppbarLayoutComponent extends Component<any, any> {
                   aria-label="Menu"
                   style={{
                     position: "absolute",
-                    left: 10
+                    left: 10,
                   }}
                   onClick={this._toggleDrawer(true)}
                 >
@@ -99,7 +98,7 @@ class AppbarLayoutComponent extends Component<any, any> {
                 </Typography>
               )}
 
-              {date && <h3 className="title-date">{date}</h3>}
+              {date && <h3 className={styles.titleDate}>{date}</h3>}
 
               {RightButton && <RightButton />}
             </Toolbar>
@@ -110,7 +109,7 @@ class AppbarLayoutComponent extends Component<any, any> {
             width: "100%",
             minHeight: "100vh",
             paddingTop: 65,
-            ...containerStyle
+            ...containerStyle,
           }}
         >
           {this.props.children}
@@ -120,6 +119,6 @@ class AppbarLayoutComponent extends Component<any, any> {
   }
 }
 
-const AppbarLayout = withStyles(styles)(AppbarLayoutComponent);
+const AppbarLayout = withStyles(fstyles)(AppbarLayoutComponent);
 
 export default AppbarLayout;

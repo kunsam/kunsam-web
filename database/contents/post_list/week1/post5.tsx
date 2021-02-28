@@ -1,7 +1,7 @@
-import "./index.scss";
+import styles from "./index.module.scss";
 
 const POST = () => (
-  <div className="post1">
+  <div className={styles.post1}>
     <p>
       我想我已经够小心翼翼的
       <br /> 我的脚趾正好十个
@@ -48,13 +48,13 @@ export default {
   title: "《明天醒来我会在哪一只鞋子里》",
   upload: {
     author: "sam",
-    create_date: "2019-12-24"
+    create_date: "2019-12-24",
   },
   brief: {
-    backgroundUrl: "/static/image/post5_brief.png"
+    backgroundUrl: "/static/image/post5_brief.png",
   },
   content: {
-    backgroundUrl: "/static/image/post5_content.png"
+    backgroundUrl: "/static/image/post5_content.png",
   },
 
   // musicUrl: "/static/music/lovelikesea.mp3",
@@ -65,9 +65,9 @@ export default {
     desc:
       "海子，原名查海生，出生于安徽省怀宁县，当代青年诗人。海子在农村长大，1979年15岁时考入北京大学法律系，1982年大学期间开始诗歌创作，1983年自北大毕业后分配至北京中国政法大学哲学教研室工作，1989年3月26日在山海关附近卧轨自杀，年仅25岁",
     avatar: "/static/image/post5_author.png",
-    lifetime: "1964 - 1989"
+    lifetime: "1964 - 1989",
   },
   client: {
-    renderContent: POST
-  }
+    renderContent: POST,
+  },
 };

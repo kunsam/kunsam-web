@@ -1,4 +1,4 @@
-import "./selected_poem.scss";
+import styles from "./selected_poem.module.scss";
 import React, { Component } from "react";
 import { MainAppLayout } from "../../layouts/mainapp/mainapp";
 import AppbarLayout from "../../layouts/appbar/appbar";
@@ -10,7 +10,7 @@ import POSTS_MAP, { Post } from "../../../database/post_map";
 const params0 = {
   slidesPerView: "auto",
   spaceBetween: 30,
-  centeredSlides: true
+  centeredSlides: true,
   // navigation: {
   //   nextEl: ".swiper-button-next",
   //   prevEl: ".swiper-button-prev"
@@ -30,18 +30,18 @@ export default class SelectedPoemPageContainer extends Component<
     this.state = {
       data: [],
       currentTimeLine: null,
-      currentSwiperIndex: 0
+      currentSwiperIndex: 0,
     };
   }
   componentDidMount() {
     let data = [];
-    POSTS_MAP.forEach(post => {
+    POSTS_MAP.forEach((post) => {
       data.push(post);
     });
     const cacheIndex = window.sessionStorage.getItem("post-currentSwiperIndex");
     this.setState({
       data,
-      currentSwiperIndex: (cacheIndex && parseInt(cacheIndex)) || 0
+      currentSwiperIndex: (cacheIndex && parseInt(cacheIndex)) || 0,
     });
   }
 
@@ -55,7 +55,7 @@ export default class SelectedPoemPageContainer extends Component<
             height: 400,
             width: "100%",
             position: "fixed",
-            backgroundImage: "linear-gradient(to right, #16222a, #3a6073)"
+            backgroundImage: "linear-gradient(to right, #16222a, #3a6073)",
           }}
         >
           <img
@@ -70,11 +70,14 @@ export default class SelectedPoemPageContainer extends Component<
             marginTop: 400,
             height: "100%",
             position: "fixed",
-            backgroundColor: "rgb(238, 240, 237)"
+            backgroundColor: "rgb(238, 240, 237)",
           }}
         ></div>
         <AppbarLayout title="精选诗集">
-          <div className="selected-poem-page-container" style={{ width: "100%" }}>
+          <div
+            className={styles.selectedPoemPageContainer}
+            style={{ width: "100%" }}
+          >
             <NoSSR>
               <div
                 className="custom-swiper-slide-container"
@@ -83,10 +86,10 @@ export default class SelectedPoemPageContainer extends Component<
                 <Swiper
                   {...params0}
                   activeSlideKey={`${currentSwiperIndex}`}
-                  getSwiper={swiper => {
+                  getSwiper={(swiper) => {
                     swiper.on("slideChange", () => {
                       this.setState({
-                        currentSwiperIndex: swiper.activeIndex
+                        currentSwiperIndex: swiper.activeIndex,
                       });
                       window.sessionStorage.setItem(
                         "post-currentSwiperIndex",
@@ -103,8 +106,8 @@ export default class SelectedPoemPageContainer extends Component<
                           Router.push({
                             pathname: "/post",
                             query: {
-                              postId: post.id
-                            }
+                              postId: post.id,
+                            },
                           });
                         }}
                       >
@@ -133,11 +136,13 @@ export default class SelectedPoemPageContainer extends Component<
                       <div
                         className="card-outer"
                         style={{
-                          display: currentSwiperIndex === index ? "" : "none"
+                          display: currentSwiperIndex === index ? "" : "none",
                         }}
                       >
                         <h2 className="author-name">{post.author.name}</h2>
-                        <h2 className="author-lifetime">{post.author.lifetime}</h2>
+                        <h2 className="author-lifetime">
+                          {post.author.lifetime}
+                        </h2>
                         <p className="author-desc">{post.author.desc}</p>
                       </div>
                     </div>

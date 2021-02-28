@@ -1,7 +1,7 @@
-import "./index.scss";
+import styles from "./index.module.scss";
 
 const POST2_CONTENT = () => (
-  <div className="post1">
+  <div className={styles.post1}>
     <p className="content">
       人的一生没有足够的时间，
       <br />

@@ -1,7 +1,7 @@
-import "./index.scss";
+import styles from "./index.module.scss";
 
 const POST4 = () => (
-  <div className="post1">
+  <div className={styles.post1}>
     <p>
       当晨曦染红了大海时，
       <br />
@@ -48,13 +48,13 @@ export default {
   title: "《一棵开花的树》",
   upload: {
     author: "sam",
-    create_date: "2019-12-24"
+    create_date: "2019-12-24",
   },
   brief: {
-    backgroundUrl: "/static/image/post4_brief.png"
+    backgroundUrl: "/static/image/post4_brief.png",
   },
   content: {
-    backgroundUrl: "/static/image/post4_content.png"
+    backgroundUrl: "/static/image/post4_content.png",
   },
 
   musicUrl: "/static/music/InLovingMemory.mp3",
@@ -65,9 +65,9 @@ export default {
     desc:
       "1963年，席慕蓉台湾师范大学美术系毕业，1966年在比利时布鲁塞尔皇家艺术学院完成进修，获得比利时皇家金牌奖、布鲁塞尔市政府金牌奖等多项奖项。著有诗集、散文集、画册及选本等五十余种，《七里香》、《无怨的青春》、《一棵开花的树》等诗篇脍炙人口",
     avatar: "/static/image/post4_author.png",
-    lifetime: "1943 - 至今"
+    lifetime: "1943 - 至今",
   },
   client: {
-    renderContent: POST4
-  }
+    renderContent: POST4,
+  },
 };

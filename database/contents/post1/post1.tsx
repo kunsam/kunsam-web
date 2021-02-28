@@ -1,7 +1,7 @@
-import "./index.scss";
+import styles from "./index.module.scss";
 
 const POST1_CONTENT = () => (
-  <div className="post1">
+  <div className={styles.post1}>
     <p className="content">
       记得苹果树下初次相会
       <br />

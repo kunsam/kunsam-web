@@ -1,7 +1,7 @@
-import "./index.scss";
+import styles from "./index.module.scss";
 
 const POST = () => (
-  <div className="post1">
+  <div className={styles.post1}>
     <p>
       Midnight in the mid-Atlantic. On deck.
       <br />
@@ -88,13 +88,13 @@ export default {
   title: "《On Deck》",
   upload: {
     author: "sam",
-    create_date: "2019-12-24"
+    create_date: "2019-12-24",
   },
   brief: {
-    backgroundUrl: "/static/image/post6_brief.png"
+    backgroundUrl: "/static/image/post6_brief.png",
   },
   content: {
-    backgroundUrl: "/static/image/post6_content.png"
+    backgroundUrl: "/static/image/post6_content.png",
   },
 
   // musicUrl: "/static/music/lovelikesea.mp3",
@@ -105,9 +105,9 @@ export default {
     desc:
       "西尔维娅·普拉斯（Sylvia Plath），生于美国波士顿牙买加平原区，儿童作家出身的美国天才诗人、小说家及短篇故事作家。",
     avatar: "/static/image/post6_author.png",
-    lifetime: "1932 - 1963"
+    lifetime: "1932 - 1963",
   },
   client: {
-    renderContent: POST
-  }
+    renderContent: POST,
+  },
 };

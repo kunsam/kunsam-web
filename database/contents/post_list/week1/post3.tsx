@@ -1,7 +1,7 @@
-import "./index.scss";
+import styles from "./index.module.scss";
 
 const POST_LOVE_NEAR = () => (
-  <div className="post1">
+  <div className={styles.post1}>
     <p>
       当晨曦染红了大海时，
       <br />
@@ -48,13 +48,13 @@ export default {
   title: "《爱在身边》",
   upload: {
     author: "sam",
-    create_date: "2019-12-24"
+    create_date: "2019-12-24",
   },
   brief: {
-    backgroundUrl: "/static/image/post3.png"
+    backgroundUrl: "/static/image/post3.png",
   },
   content: {
-    backgroundUrl: "/static/image/post3_2.png"
+    backgroundUrl: "/static/image/post3_2.png",
   },
 
   musicUrl: "/static/music/lovelikesea.mp3",
@@ -65,9 +65,9 @@ export default {
     desc:
       "约翰·沃尔夫冈·冯·歌德，出生于美因河畔法兰克福，德国著名思想家、作家、科学家，他是魏玛的古典主义最著名的代表。而作为诗歌、戏剧和散文作品的创作者，他是最伟大的德国作家之一，也是世界文学领域的一个出类拔萃的光辉人物",
     avatar: "/static/image/post3_author.png",
-    lifetime: "1924 - 2000"
+    lifetime: "1924 - 2000",
   },
   client: {
-    renderContent: POST_LOVE_NEAR
-  }
-}
+    renderContent: POST_LOVE_NEAR,
+  },
+};

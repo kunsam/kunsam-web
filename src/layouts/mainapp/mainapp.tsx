@@ -1,4 +1,3 @@
-import "./mainapp.scss";
 import Head from "next/head";
 import React, { Component } from "react";
 import { Theme, withStyles, createStyles } from "@material-ui/core/styles";
@@ -7,8 +6,8 @@ const styles = (theme: Theme) =>
   createStyles({
     root: {
       display: "flex",
-      flexWrap: "wrap"
-    }
+      flexWrap: "wrap",
+    },
   });
 
 export class MainAppLayout extends Component<any, any> {
