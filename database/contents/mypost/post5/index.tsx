@@ -1,7 +1,7 @@
-import "./index.scss";
+import styles from "./index.module.scss";
 
 const POST = () => (
-  <div className="post">
+  <div className={styles.post}>
     <p className="content">
       Everyday you are so great in striving to universalize with sacrifice,
     </p>

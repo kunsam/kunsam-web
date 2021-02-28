@@ -1,4 +1,4 @@
-import "./danmu.scss";
+import styles from "./index.module.scss";
 
 import React, { Component } from "react";
 
@@ -7,7 +7,7 @@ class DanmuItem extends Component<any, any> {
   constructor(props) {
     super(props);
     this.state = {
-      right: -1 * props.data.content.length * 14
+      right: -1 * props.data.content.length * 14,
     };
     this.startTime = Math.round(Math.random() * 3000 + props.index * 1000);
   }
@@ -27,7 +27,7 @@ class DanmuItem extends Component<any, any> {
     }
     this.setState(
       {
-        right: rightValue + 3
+        right: rightValue + 3,
       },
       () => {
         setTimeout(() => {
@@ -44,7 +44,7 @@ class DanmuItem extends Component<any, any> {
         className="DanmuItem"
         style={{
           top: data.top,
-          right: this.state.right
+          right: this.state.right,
         }}
       >
         {data.content}
@@ -56,31 +56,31 @@ class DanmuItem extends Component<any, any> {
 const default_danmu = [
   {
     top: 10,
-    content: "这首诗真好"
+    content: "这首诗真好",
   },
   {
     top: 40,
-    content: "这首诗写得真好"
+    content: "这首诗写得真好",
   },
   {
     top: 60,
-    content: "这首诗真好"
+    content: "这首诗真好",
   },
   {
     top: 90,
-    content: "好喜欢这首诗啊!!!!"
+    content: "好喜欢这首诗啊!!!!",
   },
   {
     top: 130,
-    content: "这首诗真好"
-  }
+    content: "这首诗真好",
+  },
 ];
 
 export default class Danmu extends Component<any, any> {
   render() {
     const { danmu = default_danmu } = this.props;
     return (
-      <div className="Danmu">
+      <div className={styles.Danmu}>
         <div className="Danmu-inner">
           {danmu.map((data, index) => (
             <DanmuItem key={index} data={data} index={index} />

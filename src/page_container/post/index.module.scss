@@ -1,12 +1,12 @@
-#comment-icon-button{
+#commentIconButton {
   right: 0px;
   z-index: 4;
   bottom: 0px;
   height: 60px;
-  color: #203A43;
+  color: #203a43;
   position: fixed;
 }
-#comment-area {
+#commentArea {
   bottom: 0px;
   width: 100%;
   height: 60px;
@@ -16,18 +16,18 @@
   padding-bottom: 60px;
   background-color: #fff;
   z-index: 3;
-  .input {
+  :global(.input) {
     height: 30px;
     width: 80%;
   }
-  #comment-TextField{
+  :global(#comment-TextField) {
     width: 300px;
   }
 }
 
 .PostPageContainer {
-  .custom-bg {
-    .mask {
+  :global(.custom-bg) {
+    :global(.mask) {
       position: absolute;
       width: 100%;
       height: 100%;
@@ -36,20 +36,20 @@
       background: rgba(0, 0, 0, 0.3);
     }
   }
-  .parallax-inner {
+  :global(.parallax-inner) {
     min-height: 350px;
   }
 
-  .image-header {
+  :global(.image-header) {
     position: relative;
     min-height: 350px;
   }
 
-  .content-container {
+  :global(.content-container) {
     position: relative;
     padding: 20px 40px;
     padding-top: 40px;
-    .avatar {
+    :global(.avatar) {
       left: 50%;
       top: -25px;
       width: 50px;
@@ -63,7 +63,7 @@
 .progress {
   height: 30px;
   display: flex;
-  span {
+  :global(span) {
     width: 20%;
     flex: 1;
     align-self: flex-end;
@@ -75,16 +75,16 @@
     );
     animation: equalizer 2s steps(25, end) 0s infinite;
   }
-  span:nth-child(2) {
+  :global(span):nth-child(2) {
     animation-duration: 1s;
   }
-  span:nth-child(3) {
+  :global(span):nth-child(3) {
     animation-duration: 1.3s;
   }
-  span:nth-child(4) {
+  :global(span):nth-child(4) {
     animation-duration: 0.7s;
   }
-  span:nth-child(5) {
+  :global(span):nth-child(5) {
     animation-duration: 1.2s;
   }
 }

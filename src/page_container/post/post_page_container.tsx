@@ -1,4 +1,4 @@
-import "./index.scss";
+import styles from "./index.module.scss";
 import React, { Component } from "react";
 import { MainAppLayout } from "../../layouts/mainapp/mainapp";
 import AppbarLayout from "../../layouts/appbar/appbar";
@@ -19,7 +19,7 @@ class LeftButton extends Component<any, any> {
         color="inherit"
         style={{
           position: "absolute",
-          left: 10
+          left: 10,
         }}
         onClick={() => {
           Router.back();
@@ -43,7 +43,7 @@ class RightButton extends Component<any, any> {
           width: 20,
           right: 10,
           position: "absolute",
-          justifyContent: "center"
+          justifyContent: "center",
         }}
         onClick={onClick}
       >
@@ -79,11 +79,11 @@ class PostPageContainer extends Component<
     super(props);
     this.state = {
       showComment: false,
-      musicPlayState: this._musicPlayState
+      musicPlayState: this._musicPlayState,
     };
   }
 
-  _handleClickRightButton = e => {
+  _handleClickRightButton = (e) => {
     if (this._musicRef) {
       if (this._musicPlayState === "playing") {
         this._musicRef.pause();
@@ -93,14 +93,14 @@ class PostPageContainer extends Component<
         this._musicPlayState = "playing";
       }
       this.setState({
-        musicPlayState: this._musicPlayState
+        musicPlayState: this._musicPlayState,
       });
     }
   };
 
   render() {
     const {
-      post: { title, musicUrl, client, content, author }
+      post: { title, musicUrl, client, content, author },
     } = this.props;
     const { musicPlayState } = this.state;
     return (
@@ -117,10 +117,10 @@ class PostPageContainer extends Component<
             )}
             containerStyle={{
               paddingTop: 0,
-              backgroundColor: `rgb(238, 240, 237)`
+              backgroundColor: `rgb(238, 240, 237)`,
             }}
           >
-            <div className="PostPageContainer">
+            <div className={styles.PostPageContainer}>
               <Parallax blur={{ min: -30, max: 30 }} strength={350}>
                 <Background className="custom-bg">
                   {content && content.backgroundUrl && (
@@ -150,7 +150,7 @@ class PostPageContainer extends Component<
                 <audio
                   autoPlay
                   src={musicUrl}
-                  ref={ref => {
+                  ref={(ref) => {
                     this._musicRef = ref;
                   }}
                 >
@@ -161,10 +161,10 @@ class PostPageContainer extends Component<
             </div>
 
             <IconButton
-              id="comment-icon-button"
+              id={styles.commentIconButton}
               onClick={() => {
                 this.setState({
-                  showComment: !this.state.showComment
+                  showComment: !this.state.showComment,
                 });
               }}
             >
@@ -172,7 +172,7 @@ class PostPageContainer extends Component<
             </IconButton>
 
             {this.state.showComment && (
-              <div id="comment-area">
+              <div id={styles.commentArea}>
                 <TextField id="comment-TextField" label="评论" />
               </div>
             )}

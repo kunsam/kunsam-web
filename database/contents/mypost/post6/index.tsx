@@ -1,7 +1,6 @@
-import "./index.scss";
-
+import styles from "./index.module.scss";
 const POST = () => (
-  <div className="post">
+  <div className={styles.post}>
     <p className="content">
       我喜欢了一个女孩，
       <br />

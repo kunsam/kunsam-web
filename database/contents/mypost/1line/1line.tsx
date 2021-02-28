@@ -1,7 +1,7 @@
-import "./index.scss";
+import styles from "./index.module.scss";
 
 const MYPOST_1LINE = () => (
-  <div className="my-post-1line">
+  <div className={styles.post}>
     <p className="content">
       人的日常，开始循环
       <br />

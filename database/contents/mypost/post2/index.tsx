@@ -1,7 +1,6 @@
-import "./index.scss";
-
+import styles from "./index.module.scss";
 const POST = () => (
-  <div className="my-post-1line">
+  <div className={styles.post}>
     <p className="content">
       光从一万年前走来
       <br />

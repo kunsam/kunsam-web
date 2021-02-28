@@ -1,7 +1,7 @@
-import "./index.scss";
+import styles from "./index.module.scss";
 
 const POST = () => (
-  <div className="post">
+  <div className={styles.post}>
     <p className="content">
       长长的风拉着我走了好远，
       <br />

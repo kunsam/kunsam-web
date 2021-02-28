@@ -1,7 +1,7 @@
-import "./index.scss";
+import styles from "./index.module.scss";
 
 const POST = () => (
-  <div className="post">
+  <div className={styles.post}>
     <p className="content">
       世界上没有物理的永动机，
       <br />

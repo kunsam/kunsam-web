@@ -3,10 +3,10 @@
   height: 100%;
   width: 100%;
   padding-top: 80px;
-  .Danmu-inner {
+  :global(.Danmu-inner) {
     height: 100%;
     position: relative;
-    .DanmuItem {
+    :global(.DanmuItem) {
       position: absolute;
       font-size: 14px;
       color: #fff;
