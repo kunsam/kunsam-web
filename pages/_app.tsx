@@ -5,6 +5,7 @@ import "swiper/css/swiper.css";
 import "nprogress/nprogress.css";
 import Router from "next/router";
 import NProgress from "nprogress";
+import Head from "next/head";
 
 export default class MyApp extends App<any, any, any> {
   componentDidMount() {
@@ -24,6 +25,9 @@ export default class MyApp extends App<any, any, any> {
 
     return (
       <>
+        <Head>
+          <link rel="stylesheet" href={`/css/global.css`} />
+        </Head>
         <div className="app-main">
           <Component {...pageProps} />
         </div>

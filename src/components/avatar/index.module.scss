@@ -1,0 +1,24 @@
+.avatarImage {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+}
+
+.nameAvatar {
+  width: 56px;
+  height: 56px;
+  position: relative;
+  border-radius: 100%;
+  display: inline-block;
+  text-align: center;
+}
+
+.nameAvatarText {
+  top: 50%;
+  left: 50%;
+  color: #fff;
+  width: 100%;
+  font-size: 16px;
+  position: absolute;
+  transform: translate(-50%, -50%);
+}

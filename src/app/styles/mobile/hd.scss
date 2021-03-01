@@ -1,0 +1,3 @@
+@function px2rem($design_dom) {
+  @return #{$design_dom/375 * 10}rem;
+}

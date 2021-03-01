@@ -1,0 +1,51 @@
+.UploadFileBlockButton {
+  :global(.UploadFileBlockButton-path1) {
+    opacity: 0.5;
+  }
+  :global(.UploadFileBlockButton-path2) {
+    opacity: 0.3;
+  }
+  :global(.UploadFileBlockButton-path3) {
+    opacity: 0.1;
+  }
+
+  &:hover {
+    :global(.UploadFileBlockButton-path1) {
+      opacity: 0;
+      animation: fadein1 0.2s ease 0s forwards;
+    }
+    :global(.UploadFileBlockButton-path2) {
+      animation: fadein2 0.2s ease 0.2s forwards;
+    }
+    :global(.UploadFileBlockButton-path3) {
+      opacity: 0;
+      animation: fadein3 0.2s ease 0.4s forwards;
+    }
+  }
+}
+
+@keyframes fadein1 {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes fadein2 {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+@keyframes fadein3 {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.3;
+  }
+}

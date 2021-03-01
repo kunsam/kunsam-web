@@ -1,0 +1,67 @@
+@import "../../../app/styles/mobile/hd.scss";
+
+.ctrlHeader {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  left: 0;
+  z-index: 10;
+}
+.ctrlHeaderInner {
+  padding: px2rem(40) px2rem(16) 0 px2rem(16);
+}
+
+.iconFill {
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: px2rem(80);
+  width: px2rem(80);
+  border-radius: 100%;
+}
+
+.icon {
+  height: px2rem(60);
+  width: px2rem(60);
+}
+
+.CoverContainer {
+  position: relative;
+
+  :global(.mask) {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    // background: rgba(0, 0, 0, 0.1);
+  }
+
+  :global(.parallax-inner) {
+    // transition: height 0.3s ease;
+  }
+}
+
+.ContentContainer {
+  padding-left: px2rem(40);
+}
+
+.ContentInnerContainer {
+  background-color: #fff;
+  padding: px2rem(40) px2rem(40) px2rem(40) px2rem(40);
+  // transition: all 0.3s ease;
+}
+
+.coverImage {
+  width: 100vw;
+  object-fit: cover;
+  // transition: height 0.3s ease;
+}
+
+.paragraphContainer {
+  margin-top: px2rem(100);
+}
+.paraText {
+  margin-bottom: px2rem(100);
+}

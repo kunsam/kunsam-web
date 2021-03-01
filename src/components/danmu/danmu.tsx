@@ -53,7 +53,11 @@ class DanmuItem extends Component<any, any> {
   }
 }
 
-const default_danmu = [
+export interface IDanmu {
+  top: number;
+  content: string;
+}
+const default_danmu: IDanmu[] = [
   {
     top: 10,
     content: "这首诗真好",
@@ -76,7 +80,7 @@ const default_danmu = [
   },
 ];
 
-export default class Danmu extends Component<any, any> {
+export default class Danmu extends Component<{ danmu?: IDanmu[] }, any> {
   render() {
     const { danmu = default_danmu } = this.props;
     return (
