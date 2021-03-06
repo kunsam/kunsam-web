@@ -47,7 +47,7 @@ function Component({ scrollTop }: Props) {
       <div
         style={{
           width: "100%",
-          height: 220,
+          height: 250,
           marginTop: 10,
           position: "relative",
         }}
@@ -88,7 +88,20 @@ function Component({ scrollTop }: Props) {
         <li>提升睡眠环境</li>
       </ul>
 
-      <p>放一个调节睡眠的视频</p>
+      <p style={{ marginTop: 20, marginBottom: 20 }}>
+        您也可以参考专业的资料/书籍提高睡眠质量，因为睡眠机理十分复杂
+      </p>
+
+      <img
+        src="/stories/mental_health/stress/book3.jpg"
+        style={{ width: "100%" }}
+      />
+      <a
+        style={{ fontSize: 10, color: "blue", textAlign: "center" }}
+        href="https://www.health.harvard.edu/staying-healthy/improving-sleep-a-guide-to-a-good-nights-rest"
+      >
+        链接 - Improving Sleep: A guide to a good night's rest
+      </a>
     </div>
   );
 }
