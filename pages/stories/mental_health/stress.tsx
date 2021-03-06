@@ -36,7 +36,7 @@ export default function stress() {
             </div>
           ),
           authorUserName: "samkun",
-          coverImage: "/stories/mental_health/stress/cover1.png",
+          coverImage: "/stories/mental_health/stress/cover1.jpg",
           authorAvatarUrl: "/stories/mental_health/stress/author_avatar.jpeg",
           paragraphs: [
             <p style={{ textIndent: 20 }}>
@@ -63,7 +63,7 @@ export default function stress() {
             </p>,
             <IRow justify="center">
               <img
-                src="/stories/mental_health/stress/image1.png"
+                src="/stories/mental_health/stress/image1.jpg"
                 style={{ width: "80vw" }}
               />
             </IRow>,
@@ -184,7 +184,7 @@ export default function stress() {
             </p>,
             <IRow justify="center" style={{ position: "relative" }}>
               <img
-                src="/stories/mental_health/stress/data2.png"
+                src="/stories/mental_health/stress/data2.jpg"
                 style={{ width: "80vw" }}
               />
               <div style={{ position: "absolute", bottom: -10 }}>
