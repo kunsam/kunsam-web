@@ -25,7 +25,6 @@ function Component({ id, style, onClick, className }: Props) {
       return null;
     }
     case "LeftArrow": {
-      console.log('123')
       return <LeftArrow {...withClickableProps} />;
     }
     case "Wechat": {
