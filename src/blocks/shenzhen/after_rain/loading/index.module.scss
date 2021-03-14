@@ -1,0 +1,232 @@
+// @import "compass/css3";
+
+.artboard {
+  position: relative;
+  height: 400px;
+  width: 400px;
+  border-radius: 500px;
+  background-color: rgba(255, 255, 255, 0.04);
+  overflow: hidden;
+  animation: sky 5s infinite;
+
+  :global(.st0) {
+    fill: rgba(255, 255, 255, 0);
+    stroke: rgba(255, 255, 255, 0);
+    stroke-miterlimit: 10;
+    animation: flash 5s infinite;
+  }
+
+  :global(.lightning) {
+    position: absolute;
+    width: 50%;
+    left: 50%;
+    top: 30%;
+    transform: translateX(-50%);
+  }
+
+  :global(.cloud) {
+    position: absolute;
+    z-index: 4;
+    width: 60%;
+    height: 20%;
+    background: #394e5a;
+    border-radius: 100px;
+    left: 20%;
+    top: 25%;
+    animation: cloud 5s infinite;
+    &::before {
+      content: " ";
+      position: absolute;
+      background: #394e5a;
+      width: 130px;
+      height: 130px;
+      top: -70%;
+      right: 30%;
+      border-radius: 100%;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      background: #394e5a;
+      border-radius: 100%;
+      width: 120px;
+      height: 96px;
+      top: -37%;
+      right: 8%;
+    }
+  }
+
+  :global(.rain) {
+    position: absolute;
+    width: 50%;
+    height: 80%;
+    top: 37%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  :global(.raindrop) {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 80% 0 55% 50% / 55% 0 80% 50%;
+    background-color: rgba(0, 229, 255, 0.38);
+    transform: rotate(-65deg);
+    margin-top: 20px;
+  }
+
+  @for $i from 1 through 400 {
+    :global(.raindrop:nth-child(#{$i})) {
+      left: random(200) + px;
+      top: random(30) + px;
+      animation-delay: calc(-400s / #{$i});
+      animation-duration: random(2) + s;
+    }
+  }
+
+  :global(.raindrop) {
+    animation-name: rain;
+    animation-iteration-count: infinite;
+    animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  }
+}
+
+@keyframes rain {
+  0% {
+    transform: rotate(-50deg) translate(0px);
+    opacity: 1;
+  }
+  50% {
+    transform: rotate(-50deg) translate(-500px, 300px);
+    opacity: 1;
+  }
+  60% {
+    opacity: 0;
+  }
+  100% {
+    transform: rotate(-50deg) translateY(0px);
+    opacity: 0;
+  }
+}
+
+@keyframes cloud {
+  0% {
+    transform: translateY(10px);
+    border-bottom: rgba(255, 255, 255, 0);
+  }
+  49% {
+    border-bottom: rgba(255, 255, 255, 0);
+  }
+  50% {
+    border-bottom: #00ffff 4px solid;
+  }
+  51% {
+    border-bottom: rgba(255, 255, 255, 0);
+  }
+  52% {
+    border-bottom: #ffffff 8px solid;
+  }
+  53% {
+    border-bottom: rgba(255, 255, 255, 0);
+  }
+  54% {
+    border-bottom: #00ffff 4px solid;
+    transform: translateY(-10px);
+  }
+  55% {
+    border-bottom: rgba(255, 255, 255, 0);
+  }
+  56% {
+    border-bottom: #ffffff 4px solid;
+  }
+  57% {
+    border-bottom: rgba(255, 255, 255, 0);
+  }
+  100% {
+    transform: translateY(10px);
+  }
+}
+
+@keyframes flash {
+  0% {
+    fill: rgba(255, 255, 255, 0);
+    stroke: rgba(255, 255, 255, 0);
+  }
+  49% {
+    fill: rgba(255, 255, 255, 0);
+    stroke: rgba(255, 255, 255, 0);
+  }
+  50% {
+    fill: #ffffff;
+    stroke: #00ffff;
+  }
+  51% {
+    fill: rgba(255, 255, 255, 0);
+    stroke: rgba(255, 255, 255, 0);
+  }
+  52% {
+    fill: #ffffff;
+    stroke: #00ffff;
+  }
+  53% {
+    fill: rgba(255, 255, 255, 0);
+    stroke: rgba(255, 255, 255, 0);
+  }
+  54% {
+    fill: #ffffff;
+    stroke: #00ffff;
+  }
+  55% {
+    fill: rgba(255, 255, 255, 0);
+    stroke: rgba(255, 255, 255, 0);
+  }
+  56% {
+    fill: #ffffff;
+    stroke: #00ffff;
+  }
+  57% {
+    fill: rgba(255, 255, 255, 0);
+    stroke: rgba(255, 255, 255, 0);
+  }
+  100% {
+    fill: rgba(255, 255, 255, 0);
+    stroke: rgba(255, 255, 255, 0);
+  }
+}
+
+@keyframes sky {
+  0% {
+    background-color: rgba(255, 255, 255, 0.04);
+  }
+  49% {
+    background-color: rgba(255, 255, 255, 0.04);
+  }
+  50% {
+    background-color: rgba(203, 247, 255, 0.1);
+  }
+  51% {
+    background-color: rgba(255, 255, 255, 0.04);
+  }
+  52% {
+    background-color: rgba(203, 247, 255, 0.1);
+  }
+  53% {
+    background-color: rgba(255, 255, 255, 0.04);
+  }
+  54% {
+    background-color: rgba(203, 247, 255, 0.1);
+  }
+  55% {
+    background-color: rgba(255, 255, 255, 0.04);
+  }
+  56% {
+    background-color: rgba(203, 247, 255, 0.1);
+  }
+  57% {
+    background-color: rgba(255, 255, 255, 0.04);
+  }
+  100% {
+    background-color: rgba(255, 255, 255, 0.04);
+  }
+}
