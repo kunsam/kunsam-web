@@ -199,13 +199,22 @@ export default function ShenZhenAfterRainPage() {
     };
   }, []);
 
-  console.log(touchTotalY, "touchTotalY");
+  // console.log(touchTotalY, "touchTotalY");
 
   if (loading) {
-    return <AfterRainLoading />;
+    return (
+      <>
+        <AfterRainLoading />
+      </>
+    );
   }
+
   return (
     <ShenZhenAfterRainPageContext.Provider value={{ touchTotalY: touchTotalY }}>
+      <div style={{ position: "fixed", right: 10, top: 0 }}>
+        <RightButton />
+      </div>
+
       <div
         style={{
           position: "fixed",
@@ -276,6 +285,8 @@ export default function ShenZhenAfterRainPage() {
       ))}
       <AfterRainCharpter3 touchTotalY={touchTotalY} />
       {/* // 结束时把全诗显示出来 */}
+
+      <audio autoPlay src={"/static/music/bg.mp3"}></audio>
     </ShenZhenAfterRainPageContext.Provider>
   );
 }
@@ -288,4 +299,28 @@ function getTitleStyle(touchTotalY: number): React.CSSProperties {
   return {
     clipPath: `inset(0px 0px ${clipTop}% 0px)`,
   };
+}
+
+class RightButton extends React.Component<any, any> {
+  render() {
+    return (
+      <div
+        className={styles.progress}
+        style={{
+          width: 20,
+          right: 10,
+          position: "absolute",
+          justifyContent: "center",
+        }}
+      >
+        <>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </>
+      </div>
+    );
+  }
 }
