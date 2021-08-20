@@ -16,7 +16,7 @@ function Component() {
         style={{
           position: "absolute",
           right: 0,
-          bottom: 0,
+          bottom: 20,
           fontFamily: "ui-serif",
           fontSize: 12
         }}
