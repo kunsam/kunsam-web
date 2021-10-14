@@ -26,7 +26,7 @@ export interface MYPost {
 const POSTS: MYPost[] = [
   {
     id: "post_1line_new",
-    title: "《给俊彤写首诗》",
+    title: "《林之爱》",
     brief: {
       backgroundUrl:
         "/static/image/mypost/laura-pratt--NqtqonICOM-unsplash.jpg",
