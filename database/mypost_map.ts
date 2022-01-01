@@ -1,4 +1,5 @@
 import MYPOST_1LINE from "./contents/mypost/1line/1line";
+import POST_LKPM from "./contents/mypost/post_linagkuaipinmu";
 import JUNTONG_POST from "./contents/mypost/juntong";
 import post2 from "./contents/mypost/post2";
 import post3 from "./contents/mypost/post3";
@@ -25,8 +26,26 @@ export interface MYPost {
 
 const POSTS: MYPost[] = [
   {
+    id: "post_lkpm",
+    title: "《两块屏幕》",
+    brief: {
+      backgroundUrl: "/static/image/mypost/lkpm-cover.jpg",
+    },
+    content: {
+      backgroundUrl: "/static/image/mypost/lkpm-content.jpg",
+    },
+
+    musicUrl: "/static/music/jymxtuan.mp3",
+
+    desc: "两块屏幕前，我见到了你",
+
+    client: {
+      renderContent: POST_LKPM,
+    },
+  },
+  {
     id: "post_1line_new",
-    title: "《林之爱》",
+    title: "《遇见》",
     brief: {
       backgroundUrl:
         "/static/image/mypost/laura-pratt--NqtqonICOM-unsplash.jpg",
@@ -37,7 +56,7 @@ const POSTS: MYPost[] = [
 
     musicUrl: "/static/music/zongcilang1.mp3",
 
-    desc: "一起度过漫长岁月",
+    desc: "怀念睡着了",
 
     client: {
       renderContent: JUNTONG_POST,
