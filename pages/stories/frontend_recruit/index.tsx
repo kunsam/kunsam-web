@@ -366,9 +366,6 @@ const PersonNode = ({
 };
 
 export default function Component() {
-  const [widthScore, setwidthScore] = useState(0);
-  const [depthScore, setdepthScore] = useState(0);
-
   const [personScore, setpersonScore] = useState<{
     school: number;
     major: number;
