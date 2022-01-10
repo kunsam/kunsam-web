@@ -400,10 +400,10 @@ export default function EconomyBondAnalyst() {
         paddingTop: 0,
         paddingBottom: 30,
         position: "relative",
-        color: "#ffffff",
+        // color: "#ffffff",
       }}
     >
-      <video
+      {/* <video
         autoPlay
         muted
         loop
@@ -416,7 +416,7 @@ export default function EconomyBondAnalyst() {
         }}
       >
         <source src="/economy/bond-bg.mp4" type="video/mp4" />
-      </video>
+      </video> */}
       {/* <canvas id="myChart"></canvas>
       <canvas id="myChart2" height="400"></canvas> */}
       <h2
