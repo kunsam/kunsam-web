@@ -4,6 +4,7 @@ import "antd/dist/antd.css";
 import { DataNode } from "antd/lib/tree";
 import NoSSR from "react-no-ssr";
 import { Chart } from "@antv/g2";
+import DataSet from "@antv/data-set";
 
 let index: number = 0;
 
@@ -233,6 +234,84 @@ function ChartComponent2({
   }, [data]);
 
   return <div id="myChart2" />;
+}
+
+function ChartComponent3({
+  data,
+}: {
+  data: {
+    item: string;
+    a: number;
+  }[];
+}) {
+  React.useEffect(() => {
+    const { DataView } = DataSet;
+
+    const dv = new DataView().source(data);
+    dv.transform({
+      type: "fold",
+      fields: ["a"], // 展开字段集
+      key: "user", // key字段
+      value: "score", // value字段
+    });
+    const chart = new Chart({
+      container: "myChart3",
+      autoFit: true,
+      height: 500,
+    });
+    chart.data(dv.rows);
+    chart.scale("score", {
+      min: 0,
+      max: 80,
+    });
+    chart.coordinate("polar", {
+      radius: 0.8,
+    });
+    chart.axis("item", {
+      line: null,
+      tickLine: null,
+      grid: {
+        line: {
+          style: {
+            lineDash: null,
+          },
+        },
+      },
+    });
+    chart.axis("score", {
+      line: null,
+      tickLine: null,
+      grid: {
+        line: {
+          type: "circle",
+          style: {
+            lineDash: null,
+          },
+        },
+        alternateColor: "rgba(0, 0, 0, 0.04)",
+      },
+    });
+
+    chart
+      .point()
+      .position("item*score")
+      .color("user")
+      .shape("circle")
+      .size(4)
+      .style({
+        stroke: "#fff",
+        lineWidth: 1,
+        fillOpacity: 1,
+      });
+    chart.line().position("item*score").color("user").size(2);
+    chart.render();
+
+    return () => {
+      chart.destroy();
+    };
+  }, [data]);
+
+  return <div id="myChart3" />;
 }
 
 const personRequireItems = {
@@ -495,16 +574,17 @@ export default function Component() {
           title: "数字电路",
           key: "digitCircuit",
           tags: [
-            "数组",
-            "链表",
-            "栈",
-            "队列",
-            "树",
-            "二叉树",
-            "平衡二叉树",
-            "图",
-            "字符串",
-            "堆",
+            "半导体器件",
+            "二极管",
+            "电路分析",
+            "放大电路",
+            "放大器",
+            "电路设计",
+            "阻容耦合",
+            "模拟电路",
+            "继承运放",
+            "乘法器",
+            "稳压电路",
           ],
           guangdu: {
             min: 0,
@@ -1426,6 +1506,9 @@ export default function Component() {
   return (
     <NoSSR>
       <h1>正在开发中...</h1>
+
+      <p>权重啥的可以在调、关键词再加、面试题之后收集一下</p>
+
       <p>kunsam制作。开发计划：</p>
       <div style={{ paddingLeft: 15 }}>
         <p>· 导入pdf自动获取候选人基础评分（用于第一轮快速筛选）</p>
@@ -1602,6 +1685,20 @@ export default function Component() {
               item: key,
               count: score[key],
               percent: score[key] / totalScore,
+            }))}
+          />
+        </Card>
+      </div>
+
+      <div style={{ margin: 15 }}>
+        <Card>
+          {/* <div style={{ display: "flex", justifyContent: "end" }}>
+            <Button>生成图表</Button>
+          </div> */}
+          <ChartComponent3
+            data={Object.keys(score).map((key) => ({
+              item: key,
+              a: score[key],
             }))}
           />
         </Card>
