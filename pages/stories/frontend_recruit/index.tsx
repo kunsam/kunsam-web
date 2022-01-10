@@ -1689,9 +1689,6 @@ export default function Component() {
 
       <div style={{ margin: 15 }}>
         <Card>
-          {/* <div style={{ display: "flex", justifyContent: "end" }}>
-            <Button>生成图表</Button>
-          </div> */}
           <ChartComponent3
             data={Object.keys(score).map((key) => ({
               item: key,
