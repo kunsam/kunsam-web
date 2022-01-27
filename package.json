@@ -36,7 +36,7 @@
     "react-toast": "^1.0.3",
     "sass": "^1.32.8",
     "swiper": "^5.2.1",
-    "three": "^0.123.0"
+    "three": "^0.137.0"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.144",
