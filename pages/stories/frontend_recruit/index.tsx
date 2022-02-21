@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Tree, Card, InputNumber, message } from "antd";
+import { Tree, Card, InputNumber, message, Input } from "antd";
 import "antd/dist/antd.css";
 import { DataNode } from "antd/lib/tree";
 import NoSSR from "react-no-ssr";
@@ -365,7 +365,10 @@ const PersonNode = ({
   };
 };
 
+
 export default function Component() {
+  const [name, setname] = useState("");
+
   const [personScore, setpersonScore] = useState<{
     school: number;
     major: number;
@@ -1502,8 +1505,6 @@ export default function Component() {
 
   return (
     <NoSSR>
-      <h1>正在开发中...</h1>
-
       <p>权重啥的可以在调、关键词再加、面试题之后收集一下</p>
 
       <p>kunsam制作。开发计划：</p>
@@ -1526,11 +1527,33 @@ export default function Component() {
           marginBottom: 5,
         }}
       ></div>
+      <h1>面试流程：</h1>
+      <h3 style={{ fontWeight: 700, fontSize: 20 }}>
+        1. 先叫候选人做自我介绍，然后先把基础分数打上
+      </h3>
+      <div>
+        <label>候选人姓名: </label>
+        <Input
+          style={{ width: 150 }}
+          value={name}
+          onChange={(e) => {
+            setname(e.target.value);
+          }}
+        ></Input>
+      </div>
+      <h3 style={{ fontWeight: 700, fontSize: 20 }}>2. 询问下列可能的问题</h3>
+
+      <p>
+        非计算机专业课不问计算机基础部分数字电路~操作系统部分，计算机专业按照其了解程度询问
+      </p>
       <Tree treeData={treeData} defaultExpandAll></Tree>
 
       <div style={{ margin: 15 }}>
         <Card title="得分结果">
+          <p>（自己截图）</p>
           <div style={{ marginBottom: 10, fontWeight: 500, fontSize: 20 }}>
+            <span>姓名：</span>
+            <span style={{ marginRight: 10 }}>{name}</span>
             总得分：
             {totalScore}
           </div>
